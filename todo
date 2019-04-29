@@ -1,0 +1,20 @@
+Options:
+
+-f, --file <filename>
+executes a given Brainfuck program
+
+-c, --cells <num>
+how many cells should be prepared
+
+-s, --size <num>
+size of each cell in bit (8 - 128)
+
+-a, --args <arg1 ... argn>
+arguments for the program
+
+-e, --extended
+using extended command set
+
+-b, --build
+compile Brainfuck source into executable binary
+
