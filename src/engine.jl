@@ -1,10 +1,10 @@
-mutable struct Engine
-    mem::Array{Int32,1}
+mutable struct Engine{T}
+    mem::Array{T,1}
     ptr::Int64
 end
 
-function create_engine(blocksize)
-    return Engine(zeros(blocksize), 1)
+function create_engine(memsize::Integer, celsize::DataType)
+    return Engine{celsize}(zeros(memsize), 1)
 end
 
 function inc_ptr(e::Engine)
@@ -35,16 +35,16 @@ function ioutput(e::Engine)
     return e.mem[e.ptr]
 end
 
-function iinput(e::Engine, c::Int32)
+function iinput(e::Engine, c::Integer)
     e.mem[e.ptr] = c
 end
 
 function copy_to_top(e::Engine)
-    e.mem[length(mem)] = e.mem[e.ptr]
+    e.mem[length(e.mem)] = e.mem[e.ptr]
 end
 
 function copy_to_cell(e::Engine)
-    e.mem[e.ptr] = e.mem[length(mem)]
+    e.mem[e.ptr] = e.mem[length(e.mem)]
 end
 
 function loop(e::Engine)

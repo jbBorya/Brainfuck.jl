@@ -1,7 +1,7 @@
 
 include("./engine.jl")
 
-const DEBUG = true
+const DEBUG = false
 
 function execute(e::Engine, source, args)
     ops = replace(source, r"[^\>\<\+\-\.\,\[\]\:\;\#\$]" => "")
